@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -17,32 +18,40 @@ class Order
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Assert\Unique
+     * @Assert\Type("integer")
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Type("integer")
      */
     private $totalPrice;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Type("integer")
+     * @Assert\Length(max=1)
      */
     private $status;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime
      */
     private $dateOrder;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="orders")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Type("object")
      */
     private $users;
 
     /**
      * @ORM\OneToMany(targetEntity=DetailOrder::class, mappedBy="orders", orphanRemoval=true)
+     * @Assert\Type("object")
      */
     private $detailOrders;
 
