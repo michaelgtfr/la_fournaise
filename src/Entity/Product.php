@@ -6,6 +6,7 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -16,41 +17,57 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Assert\Unique
+     * @Assert\Type("integer")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Type("string")
+     * @Assert\Length(max=255)
      */
     private $presentation;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Positive
+     * @Assert\Length(max=3)
      */
     private $price;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Type("integer")
+     * @Assert\NotBlank
+     * @Assert\Length(max=1)
      */
     private $status;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Type("string")
+     * @Assert\Length(max=100)
+     * @Assert\NotBlank
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Type("string")
+     * @Assert\Length(max=100)
      */
     private $ingredientList;
 
     /**
      * @ORM\OneToMany(targetEntity=DetailOrder::class, mappedBy="products")
+     * @Assert\Type("object")
      */
     private $detailOrders;
 
     /**
      * @ORM\OneToOne(targetEntity=PictureProduct::class, inversedBy="products", cascade={"persist", "remove"})
+     * @Assert\Type("object")
      */
     private $pictures;
 
