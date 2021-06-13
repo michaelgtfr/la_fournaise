@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PromotionalCodeRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -14,21 +15,28 @@ class PromotionalCode
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Assert\Unique
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Type("integer")
+     * @Assert\Length(max=1)
      */
     private $numberOffer;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Type("integer")
+     * @Assert\Length(max=1)
      */
     private $unit;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Type("integer")
+     * @Assert\Length(max=2)
      */
     private $subject;
 
