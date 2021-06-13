@@ -2,25 +2,31 @@
 
 namespace App\Entity;
 
-use App\Repository\AbstractPictureRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 Abstract class AbstractPicture
 {
     /**
      * @ORM\Column(type="string", length=60)
+     * @Assert\Type("string")
+     * @Assert\Length(max=60)
      */
-    private $namePicture;
+    protected $namePicture;
 
     /**
      * @ORM\Column(type="string", length=4)
+     * @Assert\Type("string")
+     * @Assert\Length(max=4)
      */
-    private $extensionPicture;
+    protected $extensionPicture;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Type("string")
+     * @Assert\Length(max=100)
      */
-    private $descriptionPicture;
+    protected $descriptionPicture;
 
 
     public function getNamePicture(): ?string
