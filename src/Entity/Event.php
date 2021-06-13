@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EventRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -16,31 +17,42 @@ class Event
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Assert\Unique
+     * @Assert\Type("integer")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Type("string")
+     * @Assert\Length(max=100)
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=150)
+     * @Assert\Type("string")
+     * @Assert\Length(max=150)
      */
     private $subtitle;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Type("string")
+     * @Assert\Length(max=255)
      */
     private $chapo;
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Assert\Type("string")
+     * @Assert\Length(max=1000)
      */
     private $content;
 
     /**
      * @ORM\OneToMany(targetEntity=PictureEvent::class, mappedBy="events")
+     * @Assert\Type("object")
      */
     private $pictureEvents;
 
