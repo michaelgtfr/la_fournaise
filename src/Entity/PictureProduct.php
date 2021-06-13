@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PictureProductRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -14,11 +15,14 @@ class PictureProduct extends AbstractPicture
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Assert\Unique
+     * @Assert\Type("integer")
      */
     private $id;
 
     /**
      * @ORM\OneToOne(targetEntity=Product::class, mappedBy="pictures", cascade={"persist", "remove"})
+     * @Assert\Type("object")
      */
     private $products;
 
