@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -18,54 +19,75 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Assert\Unique
+     * @Assert\Type("integer")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=60, unique=true)
+     * @Assert\Length(max=60)
+     * @Assert\Email
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Assert\Type("array")
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\Type("string")
+     * @Assert\Length(max=255)
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=40)
+     * @Assert\Type("string")
+     * @Assert\Length(max=40)
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=40)
+     * @Assert\Type("string")
+     * @Assert\Length(max=40)
      */
     private $nameOrderWithdrawal;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Type("integer")
+     * @Assert\Length(max=10)
      */
     private $numberCellphone;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Type("integer")
      */
     private $confirmationAccount;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=5)
+     * @Assert\Type("string")
+     * @Assert\Length(max=255)
      */
     private $confirmationKey;
 
+    /**
+     * @Assert\Type("string")
+     * @Assert\Length(max=255)
+     */
     private $confirmationPassword;
 
     /**
      * @ORM\OneToMany(targetEntity=Order::class, mappedBy="users", orphanRemoval=true)
+     * @Assert\Type("object")
      */
     private $orders;
 
