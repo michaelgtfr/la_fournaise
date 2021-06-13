@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\LocationRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -14,31 +15,38 @@ class Location
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Assert\Unique
+     * @Assert\Type("integer")
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Length(max=2)
      */
     private $day;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Length(max=100)
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @Assert\Length(max=60)
      */
     private $city;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="datetime")
+     * @Assert\DateTime
      */
     private $beginHour;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="datetime")
+     * @Assert\DateTime
      */
     private $endTime;
 
