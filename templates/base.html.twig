@@ -2,18 +2,60 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('base') }}
         {% endblock %}
     </head>
     <body>
+        <header class="banner row">
+            <div class="col-lg-3">
+                <a class="navbar-brand position-absolute" href="#">
+                    <img src="{{ asset('img/logo_la_founaise_sans_fond.png') }}" width="auto" height="70px"
+                         class="d-inline-block align-top" alt="logo la fournaise">
+                </a>
+            </div>
+            <div class="col-lg-12 text-center">
+                <h1 class="text-center banner__title p-2">La Fournaise<i class="fas fa-truck"></i></h1>
+            </div>
+        </header>
+
+        <section class="picture-banner">
+            <div class="row">
+                <div class="picture_banner__subtitle col-sm-12 text-center m-3">
+                    <h2>Cuisine réunionnaise Authentique-Savoureuse-Intense</h2>
+                </div>
+                <div class="picture_banner__presentation col-sm-8 offset-sm-2 p-5">
+                    <p>Gournand, Epicé, Savoureux, Consistant ... . Venez!! je vous fais voyager au dela de la métropole, bienvenu à la réunion. Venez gouter la cuisine au influence malgach, française, indienne, africaine et chinoise. Sur ce site vous pouvez voir le menu, commandé et venir le récupéré sur place.</p>
+                </div>
+                <div class="picture-banner__route-button col-sm-6 text-center">
+                    <a class="btn btn-primary btn-lg btn-success col-sm-3" href="#">Itinéraire</a>
+                </div>
+                <div class="picture-banner__menu-button col-sm-6 text-center">
+                    <a class="btn btn-lg btn-outline-success col-sm-3" href="#">Le menu</a>
+                </div>
+            </div>
+        </section>
+
+        <nav class="navigation fixed-bottom sticky-top navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse row" id="navbarNavAltMarkup">
+                <div class="navbar-nav p-3 justify-content-around">
+                    <a class="nav-item nav-link active" href="#">Accueil</a>
+                    <a class="nav-item nav-link" href="#">Le menu</a>
+                    <a class="nav-item nav-link" href="#">Connexion</a>
+                    <a class="nav-item nav-link" href="#">Contact</a>
+                </div>
+            </div>
+        </nav>
         {% block body %}{% endblock %}
     </body>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('base') }}
+    {% endblock %}
 </html>
