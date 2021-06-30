@@ -1,1 +1,62 @@
 @import "~bootstrap/scss/bootstrap";
+
+$green-personal: #72bb53;
+
+.banner
+{
+  background-color: $green-personal;
+  &__title{
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+    font-size: 48px;
+  }
+  .fa-truck
+  {
+    font-size: 20px;
+  }
+}
+
+.picture-banner
+{
+  padding-top: 60px;
+  padding-bottom: 100px;
+  background-size: 100%;
+  background-image: url("../../public/img/font_header_two.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  &__subtitle, h2
+  {
+    color: white;
+    font-weight: bold;
+    font-size: 42px;
+    font-family: 'Helvetica', sans-serif;
+  }
+  &__presentation, p
+  {
+    font-family: 'georgia', sans-serif;
+    font-size: 24px;
+    color: #444444;
+  }
+  .btn-outline-success
+  {
+    background-color: white;
+    color: $green-personal;
+    font-size: 24px;
+    border: 1px $green-personal solid
+  }
+  .btn-success
+  {
+    background-color: $green-personal;
+    font-size: 24px;
+    border: 1px white solid;
+  }
+}
+
+.navigation
+{
+  .nav-link
+  {
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+  }
+}
