@@ -9,7 +9,17 @@
 namespace App\Tests\Controller;
 
 
-class HomepageControllerTest
-{
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+class HomepageControllerTest extends WebTestCase
+{
+    public function testHomepageDisplayPage()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/');
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertSame('Localisations/Horaires:', $crawler->filter('.location__title')->text());
+    }
 }
