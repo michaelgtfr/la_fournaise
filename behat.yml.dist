@@ -1,0 +1,14 @@
+default:
+  suites:
+    default:
+      contexts:
+        - App\Tests\Behat\FeaturesContext
+
+  extensions:
+    DAMA\DoctrineTestBundle\Behat\ServiceContainer\DoctrineExtension: ~
+    FriendsOfBehat\SymfonyExtension: ~
+    Behat\MinkExtension:
+      base_url: 'http://127.0.0.1:8000/'
+      sessions:
+        symfony:
+          symfony: ~
