@@ -8,6 +8,11 @@
 {% block body %}
     <section class="location">
         <div class="row">
+            <div class="col-sm-12 text-center p-4">
+                <h1 class="location__title">Localisations/Horaires:</h1>
+            </div>
+        </div>
+        <div class="row">
             <div class="location__block-monday col-sm-4">
                 {% for location in locations %}
                     {% if location.day == 1 %}
