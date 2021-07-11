@@ -6,7 +6,7 @@ services:
 
 
 env:
-  - SYMFONY_VERSION=5.0.* DB=mysql
+  - SYMFONY_VERSION=5.0.* DB=mysql APP_ENV=test
 
 before_script:
   - composer install
