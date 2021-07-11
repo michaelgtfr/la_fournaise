@@ -7,7 +7,6 @@ services:
 
 env:
   - SYMFONY_VERSION=5.0.*
-  - APP_ENV=test
 
 before_script:
   - composer install
