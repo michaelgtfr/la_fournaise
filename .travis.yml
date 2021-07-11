@@ -9,7 +9,10 @@ env:
   - SYMFONY_VERSION=5.0.* DB=mysql
 
 before_script:
-  - composer install
+  - composer install --no-script -n
+  - cp .env.test .env
+  - cp behat.yml.dist
+  - cp phpunit.xml.dist phpunit.xml 
 
 script:
   - php bin/console doctrine:database:create --env=test
