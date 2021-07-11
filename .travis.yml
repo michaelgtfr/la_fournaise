@@ -14,6 +14,7 @@ before_script:
 script:
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:update --force --env=test
+  - symfony server:run
   - ./vendor/bin/behat
   - php/bin/phpunit
   - php/bin/phpunit --coverage-text
