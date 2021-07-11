@@ -1,0 +1,20 @@
+.location
+{
+  &__title
+  {
+    font-family: 'Varela Round', sans-serif;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  img
+  {
+    height: 200px;
+  }
+
+  p, h5
+  {
+    font-weight: bold;
+    font-size: 24px;
+  }
+}
