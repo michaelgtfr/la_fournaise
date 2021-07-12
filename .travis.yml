@@ -28,4 +28,3 @@ script:
   - php bin/console doctrine:schema:update --force --env=test
   - ./vendor/bin/behat
   - vendor/bin/phpunit
-  - vendor/bin/phpunit --coverage-text
