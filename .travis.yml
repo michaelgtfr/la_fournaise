@@ -1,5 +1,9 @@
 language: php
 sudo: false
+
+services:
+  - mysql: "8.0"
+  
 cache:
   directories:
     - $HOME/.composer/cache/files
