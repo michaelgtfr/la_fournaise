@@ -1,6 +1,9 @@
 language: php
-php:
-  - '7.3'
+matrix:
+    fast_finish: true
+    include:
+      - '7.3'
+      
 services:
   - mysql
 
