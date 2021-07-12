@@ -1,30 +1,32 @@
 language: php
+sudo: false
+cache:
+    directories:
+        - $HOME/.composer/cache/files
 
-php:
-  - '7.3'
-  
+env:
+    global:
+        - PHPUNIT_FLAGS="-v"
+
 matrix:
     fast_finish: true
     include:
-      - '7.3'
-      
-services:
-  - mysql
+          # Minimum supported dependencies with the latest and oldest PHP version
+        - php: 7.3"
 
+before_install:
+    - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
+    - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
+    - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
 
-env:
-  - SYMFONY_VERSION=5.0.*
-  
-  install:
-  - if [ "$SYMFONY_VERSION" = "5.0.*" ]; then composer require behat/behat:dev-master --no-update --no-scripts --prefer-dist; fi
-  - composer require symfony/config:${SYMFONY_VERSION} --no-update --no-scripts --prefer-dist
-  - composer update --no-progress
-
-before_script:
-  - composer install
+install:
+    # To be removed when this issue will be resolved: https://github.com/composer/composer/issues/5355
+    - if [[ "$COMPOSER_FLAGS" == *"--prefer-lowest"* ]]; then composer update --prefer-dist --no-interaction --prefer-stable --quiet; fi
+    - composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction
+    - ./vendor/bin/phpunit install
 
 script:
-  - php bin/console doctrine:database:create --env=test
-  - php bin/console doctrine:schema:update --force --env=test
-  - ./vendor/bin/behat
-  - vendor/bin/phpunit
+    - composer validate --strict --no-check-lock
+    # simple-phpunit is the PHPUnit wrapper provided by the PHPUnit Bridge component and
+    # it helps with testing legacy code and deprecations (composer require symfony/phpunit-bridge)
+    - ./vendor/bin/phpunit $PHPUNIT_FLAGS
