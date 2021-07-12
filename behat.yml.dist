@@ -5,8 +5,8 @@ default:
         - App\Tests\Behat\FeaturesContext
 
   extensions:
-    DAMA\DoctrineTestBundle\Behat\ServiceContainer\DoctrineExtension: ~
-    FriendsOfBehat\SymfonyExtension: ~
+    FriendsOfBehat\SymfonyExtension:
+      bootstrap: tests/bootstrap.php
     Behat\MinkExtension:
       base_url: 'http://127.0.0.1:8000/'
       sessions:
