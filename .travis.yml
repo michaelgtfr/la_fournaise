@@ -31,7 +31,7 @@ before_install:
   - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
 
 install:
-  - composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction
+  - composer update ${COMPOSER_FLAGS} 
   - ./vendor/bin/simple-phpunit install
 
 script:
