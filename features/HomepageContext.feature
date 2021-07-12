@@ -5,4 +5,4 @@ Feature:
 
   Scenario: display the login page
     When I visit the web site
-    Then I should see "lundi"
+    Then I should see "Localisations/Horaires:"
