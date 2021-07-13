@@ -17,7 +17,7 @@ env:
     - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
     - XDEBUG_MODE=coverage
 
-matrix:
+jobs:
   fast_finish: true
   include:
     - php: 7.3
