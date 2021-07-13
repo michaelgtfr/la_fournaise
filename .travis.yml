@@ -2,7 +2,7 @@ language: php
 sudo: false
 
 services:
-  - mysql: "8.0"
+  - mysql
   
 cache:
   directories:
