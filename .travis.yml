@@ -13,6 +13,7 @@ cache:
 env:
   global:
     - NODE_VERSION="14.17"
+    - COVERAGE=true
     - PHPUNIT_FLAGS="-v --coverage-text"
     - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
 
