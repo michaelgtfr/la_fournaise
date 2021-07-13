@@ -40,6 +40,7 @@ install:
     - ./vendor/bin/simple-phpunit install
 
 script:
+  - yarn watch
   - php bin/console cache:clear --env=tests
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:update --force --env=test
