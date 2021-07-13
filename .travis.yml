@@ -48,4 +48,3 @@ script:
   # it helps with testing legacy code and deprecations (composer require symfony/phpunit-bridge)
   - vendor/bin/simple-phpunit $PHPUNIT_FLAGS
   - vendor/bin/behat
-  - vendor/bin/simple-phpunit --coverage-text
