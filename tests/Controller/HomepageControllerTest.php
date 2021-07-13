@@ -19,7 +19,6 @@ class HomepageControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/');
 
-        dd($crawler);
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertSame('Localisations/Horaires:', $crawler->filter('.location__title')->text());
     }
