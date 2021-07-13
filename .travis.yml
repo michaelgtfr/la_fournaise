@@ -46,4 +46,6 @@ script:
   - php bin/console doctrine:schema:update --force --env=test
   # simple-phpunit is the PHPUnit wrapper provided by the PHPUnit Bridge component and
   # it helps with testing legacy code and deprecations (composer require symfony/phpunit-bridge)
-  - ./vendor/bin/simple-phpunit $PHPUNIT_FLAGS
+  - vendor/bin/simple-phpunit $PHPUNIT_FLAGS
+  - vendor/bin/behat
+  - vendor/bin/simple-phpunit --coverage-text
