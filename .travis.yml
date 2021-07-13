@@ -4,7 +4,7 @@ sudo: false
 
 services:
   - mysql
-  
+
 cache:
   directories:
     - $HOME/.composer/cache/files
@@ -13,13 +13,14 @@ cache:
 env:
   global:
     - NODE_VERSION="14.17"
-    - COVERAGE=true
+    - PHPUNIT_FLAGS="-v"
     - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
 
 matrix:
   fast_finish: true
   include:
     - php: 7.3
+      env: COVERAGE=true PHPUNIT_FLAGS="-v --coverage-text"
 
 
   allow_failures:
@@ -33,9 +34,9 @@ before_install:
   - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
 
 install:
-    - if [[ "$COMPOSER_FLAGS" == *"--prefer-lowest"* ]]; then composer update --prefer-dist --no-interaction --prefer-stable --quiet; fi
-    - composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction
-    - ./vendor/bin/simple-phpunit install
+  - if [[ "$COMPOSER_FLAGS" == *"--prefer-lowest"* ]]; then composer update --prefer-dist --no-interaction --prefer-stable --quiet; fi
+  - composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction
+  - ./vendor/bin/simple-phpunit install
 
 script:
   - yarn install
@@ -45,5 +46,5 @@ script:
   - php bin/console doctrine:schema:update --force --env=test
   # simple-phpunit is the PHPUnit wrapper provided by the PHPUnit Bridge component and
   # it helps with testing legacy code and deprecations (composer require symfony/phpunit-bridge)
-  - vendor/bin/simple-phpunit --coverage-text
+  - vendor/bin/simple-phpunit $PHPUNIT_FLAGS
   - vendor/bin/behat
