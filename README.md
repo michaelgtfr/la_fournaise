@@ -1,4 +1,5 @@
 # la_fournaise"
+[![Build Status](https://travis-ci.com/michaelgtfr/la_fournaise.svg?branch=main)](https://travis-ci.com/michaelgtfr/la_fournaise)
 
 ## Presentation
 
