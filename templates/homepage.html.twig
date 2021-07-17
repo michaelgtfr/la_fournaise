@@ -3,6 +3,9 @@
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('homepage') }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
 {% endblock %}
 
 {% block body %}
@@ -16,13 +19,13 @@
             <div class="location__block-monday col-sm-4">
                 {% for location in locations %}
                     {% if location.day == 1 %}
-                        <div class="card text-white m-2">
+                        <div id="day-1" class="card text-white m-2" data-longitude={{ location.longitude }} data-latitude={{ location.latitude }}>
                             <img class="card-img" src="{{ asset('img/le_portel.jpg') }}" alt="Card image">
                             <div class="card-img-overlay text-center">
                                 <h5 class="card-title">Lundi</h5>
-                                <p class="cart-text"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
-                                <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
-                                <p class="card-text">{{ location.city|capitalize }}</p>
+                                <p class="cart-text hour"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
+                                <p class="card-text address"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
+                                <p class="card-text capitalize">{{ location.city|capitalize }}</p>
                             </div>
                         </div>
                     {% endif %}
@@ -31,13 +34,13 @@
             <div class="location__block-tuesday col-sm-4">
                 {% for location in locations %}
                     {% if location.day == 2 %}
-                        <div class="card text-white m-2">
+                        <div id="day-2" class="card text-white m-2" data-longitude={{ location.longitude }} data-latitude={{ location.latitude }}>
                             <img class="card-img" src="{{ asset('img/equihen.jpg') }}" alt="Card image">
                             <div class="card-img-overlay text-center">
                                 <h5 class="card-title">Mardi</h5>
-                                <p class="cart-text"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
-                                <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
-                                <p class="card-text">{{ location.city|capitalize }}</p>
+                                <p class="cart-text hour"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
+                                <p class="card-text address"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
+                                <p class="card-text capitalize">{{ location.city|capitalize }}</p>
                             </div>
                         </div>
                     {% endif %}
@@ -46,13 +49,13 @@
             <div class="location__block-wednesday col-sm-4">
                 {% for location in locations %}
                     {% if location.day == 3 %}
-                        <div class="card text-white m-2">
+                        <div id="day-3" class="card text-white m-2" data-longitude={{ location.longitude }} data-latitude={{ location.latitude }}>
                             <img class="card-img" src="{{ asset('img/boulogne_sur_mer.jpg') }}" alt="Card image">
                             <div class="card-img-overlay text-center">
                                 <h5 class="card-title">Mercredi</h5>
-                                <p class="cart-text"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
-                                <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
-                                <p class="card-text">{{ location.city|capitalize }}</p>
+                                <p class="cart-text hour"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
+                                <p class="card-text address"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
+                                <p class="card-text capitalize">{{ location.city|capitalize }}</p>
                             </div>
                         </div>
                     {% endif %}
@@ -61,28 +64,34 @@
             <div class="location__block-thursday col-sm-4">
                 {% for location in locations %}
                     {% if location.day == 4 %}
-                        <div class="card text-white m-2">
+                        <div id="day-4" class="card text-white m-2" data-longitude={{ location.longitude }} data-latitude={{ location.latitude }}>
                             <img class="card-img" src="{{ asset('img/equihen.jpg') }}" alt="Card image">
                             <div class="card-img-overlay text-center">
                                 <h5 class="card-title">Jeudi</h5>
-                                <p class="cart-text"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
-                                <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
-                                <p class="card-text">{{ location.city|capitalize }}</p>
+                                <p class="cart-text hour"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
+                                <p class="card-text address"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
+                                <p class="card-text capitalize">{{ location.city|capitalize }}</p>
                             </div>
                         </div>
                     {% endif %}
                 {% endfor %}
             </div>
+            <div class="col-sm-4">
+                <div class="card location__presentation  m-2 ">
+                    <p>Vous pouvez voir sur cette carte l'emplacement du jour. Cliquez sur la carte du jour voulue pour voir son emplacement sur la carte.</p>
+                </div>
+            </div>
+            <div id="mapid" class="col-sm-4"></div>
             <div class="location__block-friday col-sm-4">
                 {% for location in locations %}
                     {% if location.day == 5 %}
-                        <div class="card text-white m-2">
+                        <div id="day-5" class="card text-white m-2" data-longitude={{ location.longitude }} data-latitude={{ location.latitude }}>
                             <img class="card-img" src="{{ asset('img/boulogne_sur_mer.jpg') }}" alt="Card image">
                             <div class="card-img-overlay text-center">
                                 <h5 class="card-title">Vendredi</h5>
-                                <p class="cart-text"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
-                                <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
-                                <p class="card-text">{{ location.city|capitalize }}</p>
+                                <p class="cart-text hour"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
+                                <p class="card-text address"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
+                                <p class="card-text capitalize">{{ location.city|capitalize }}</p>
                             </div>
                         </div>
                     {% endif %}
@@ -91,13 +100,13 @@
             <div class="location__block-saturday col-sm-4">
                 {% for location in locations %}
                     {% if location.day == 6 %}
-                        <div class="card text-white m-2">
+                        <div id="day-6" class="card text-white m-2" data-longitude={{ location.longitude }} data-latitude={{ location.latitude }}>
                             <img class="card-img" src="{{ asset('img/equihen.jpg') }}" alt="Card image">
                             <div class="card-img-overlay text-center">
                                 <h5 class="card-title">Samedi</h5>
-                                <p class="cart-text"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
-                                <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
-                                <p class="card-text">{{ location.city|capitalize }}</p>
+                                <p class="cart-text hour"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
+                                <p class="card-text address"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
+                                <p class="card-text capitalize">{{ location.city|capitalize }}</p>
                             </div>
                         </div>
                     {% endif %}
@@ -105,14 +114,14 @@
             </div>
             <div class="location__block-sunday col-sm-4">
                 {% for location in locations %}
-                    {% if location.day == 7 %}
-                        <div class="card text-white m-2">
+                    {% if location.day == 0 %}
+                        <div  id="day-0" class="card text-white m-2" data-longitude={{ location.longitude }} data-latitude={{ location.latitude }}>
                             <img class="card-img" src="{{ asset('img/boulogne_sur_mer.jpg') }}" alt="Card image">
                             <div class="card-img-overlay text-center">
                                 <h5 class="card-title">Dimanche</h5>
-                                <p class="cart-text"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
-                                <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
-                                <p class="card-text">{{ location.city|capitalize }}</p>
+                                <p class="cart-text hour"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
+                                <p class="card-text address"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
+                                <p class="card-text capitalize">{{ location.city|capitalize }}</p>
                             </div>
                         </div>
                     {% endif %}
@@ -121,4 +130,11 @@
         </div>
     </section>
 {%  endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('homepage') }}
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+{% endblock %}
 
