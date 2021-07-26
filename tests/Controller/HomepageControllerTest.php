@@ -9,17 +9,43 @@
 namespace App\Tests\Controller;
 
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use App\DataFixtures\AppFixtures;
+use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+use Liip\TestFixturesBundle\Test\FixturesTrait;
+use Symfony\Component\Panther\PantherTestCase;
 
-class HomepageControllerTest extends WebTestCase
+class HomepageControllerTest extends PantherTestCase
 {
+    use FixturesTrait;
+
+    protected function dataFixture()
+    {
+        $this->loadFixtures([
+            AppFixtures::class,
+        ]);
+    }
+
+    public function tearDown(): void
+    {
+        $purger = new ORMPurger(self::$container->get('doctrine')->getManager());
+        $purger->purge();
+        parent::tearDown();
+
+    }
+
     public function testHomepageDisplayPage()
     {
-        $client = static::createClient();
+        $client = static::createPantherClient();
+        $this->dataFixture();
 
-        $crawler = $client->request('GET', '/');
-        
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertSame('Localisations/Horaires:', $crawler->filter('.location__title')->text());
+        $client->request('GET', '/');
+
+        $this->assertSelectorTextContains('.location__title', 'Localisations/Horaires:');
+
+        //display of cards
+        $this->assertSelectorTextContains('.card-title', 'Lundi');
+
+        //display of marker
+        $this->assertSelectorIsVisible('.leaflet-marker-pane');
     }
 }
