@@ -5,6 +5,9 @@
     "behat/gherkin": {
         "version": "v4.8.0"
     },
+    "behat/mink-selenium2-driver": {
+        "version": "v1.4.0"
+    },
     "behat/transliterator": {
         "version": "v1.3.0"
     },
@@ -22,6 +25,9 @@
         "files": [
             "./config/packages/test/dama_doctrine_test_bundle.yaml"
         ]
+    },
+    "dbrekelmans/bdi": {
+        "version": "0.3"
     },
     "doctrine/annotations": {
         "version": "1.0",
@@ -44,6 +50,9 @@
     "doctrine/common": {
         "version": "3.1.2"
     },
+    "doctrine/data-fixtures": {
+        "version": "1.5.0"
+    },
     "doctrine/dbal": {
         "version": "2.13.1"
     },
@@ -64,6 +73,18 @@
             "./config/packages/test/doctrine.yaml",
             "./src/Entity/.gitignore",
             "./src/Repository/.gitignore"
+        ]
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "e5b542d4ef47d8a003c91beb35650c76907f7e53"
+        },
+        "files": [
+            "./src/DataFixtures/AppFixtures.php"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
@@ -133,6 +154,9 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
     },
+    "instaclick/php-webdriver": {
+        "version": "1.4.9"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -141,6 +165,9 @@
     },
     "laminas/laminas-zendframework-bridge": {
         "version": "1.2.0"
+    },
+    "liip/test-fixtures-bundle": {
+        "version": "1.12.0"
     },
     "monolog/monolog": {
         "version": "2.2.0"
@@ -159,6 +186,9 @@
     },
     "php": {
         "version": "7.3"
+    },
+    "php-webdriver/webdriver": {
+        "version": "1.11.1"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
@@ -463,6 +493,15 @@
     },
     "symfony/orm-pack": {
         "version": "v2.1.0"
+    },
+    "symfony/panther": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "93d9baa582d0a755cc9ef81bc38a921d5fa16973"
+        }
     },
     "symfony/phpunit-bridge": {
         "version": "5.1",
