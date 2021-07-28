@@ -35,7 +35,9 @@ class HomepageControllerTest extends PantherTestCase
 
     public function testHomepageDisplayPage()
     {
-        $client = static::createPantherClient();
+        $client = static::createPantherClient([
+        ]);
+
         $this->dataFixture();
 
         $client->request('GET', '/');
@@ -45,7 +47,35 @@ class HomepageControllerTest extends PantherTestCase
         //display of cards
         $this->assertSelectorTextContains('.card-title', 'Lundi');
 
+        //display the map
+        $this->assertSelectorIsVisible('#mapid');
+
+
         //display of marker
         $this->assertSelectorIsVisible('.leaflet-marker-pane');
+    }
+
+    public function testUpdateTheMarkerLocationInClickOfAnOtherLocation()
+    {
+        $client = static::createPantherClient([
+        ]);
+
+        $this->dataFixture();
+
+        $crawler = $client->request('GET', '/');
+
+        //retrieve the number of marker changes this is incremented by a click on a location card
+        $recoverToNumberMarkerTotalCall = $crawler->filter('#mapid')
+            ->getAttribute('data-number-marker-total-call');
+
+        $client->wait(10);
+
+        $client->clickLink('Lundi');
+
+        $this->assertSelectorAttributeContains(
+            '#mapid',
+            'data-number-marker-total-call',
+            $recoverToNumberMarkerTotalCall + 1
+        );
     }
 }
