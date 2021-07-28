@@ -22,7 +22,7 @@
                         <div id="day-1" class="card text-white m-2" data-longitude={{ location.longitude }} data-latitude={{ location.latitude }}>
                             <img class="card-img" src="{{ asset('img/le_portel.jpg') }}" alt="Card image">
                             <div class="card-img-overlay text-center">
-                                <h5 class="card-title">Lundi</h5>
+                                <a class="card-title" href="#"><h5>Lundi</h5></a>
                                 <p class="cart-text hour"><i class="far fa-clock"></i> {{ location.beginHour|date("H:i") }} - {{ location.endTime|date("H:i") }}</p>
                                 <p class="card-text address"><i class="fas fa-map-marker-alt"></i> {{ location.address }}</p>
                                 <p class="card-text capitalize">{{ location.city|capitalize }}</p>
