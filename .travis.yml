@@ -1,6 +1,7 @@
 language: php
 
 services:
+  - xvfb
   - mysql
 
 cache:
