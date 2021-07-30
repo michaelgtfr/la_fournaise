@@ -4,6 +4,7 @@ sudo: false
 
 services:
   - mysql
+  - xvfb
 
 cache:
   directories:
