@@ -60,7 +60,7 @@ script:
   - yarn encore dev
   - php bin/console cache:clear --env=tests
   - wget https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar &> /dev/null
-  - java selenium-server-standalone-3.141.59.jar & 
+  - java -jar selenium-server-standalone-3.141.59.jar & 
   - sudo cp geckodriver /usr/bin
   - sleep 20s
   - php bin/console doctrine:database:create --env=test
