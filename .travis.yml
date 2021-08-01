@@ -21,8 +21,6 @@ env:
     - PHPUNIT_FLAGS="-v"
     - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
     - MOZ_HEADLESS=1
-    - DISPLAY=:99.0
-    - SELENIUM_FIREFOX_DRIVER=/home/travis/build/lotcz/zSample/geckodriver
 
 matrix:
   fast_finish: true
@@ -55,8 +53,11 @@ script:
   - yarn install
   - yarn encore dev
   - php bin/console cache:clear --env=tests
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
   - wget https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar &> /dev/null
-  - java -jar -Dwebdriver.gecko.driver=$SELENIUM_FIREFOX_DRIVER selenium-server-standalone-3.141.59.jar & 
+  - java selenium-server-standalone-3.141.59.jar & 
+  - sudo cp geckodriver /usr/bin
   - sleep 20s
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:update --force --env=test
