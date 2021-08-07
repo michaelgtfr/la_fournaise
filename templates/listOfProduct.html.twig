@@ -1,0 +1,199 @@
+{% extends 'baseTwo.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('listOfProduct') }}
+{% endblock %}
+
+{% block  body %}
+    <section class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="text-center mt-4">Le menu:</h4>
+            </div>
+            <div class="col-sm-12">
+                {% if listOfProduct is defined %}
+                    <div class="row">
+                        <div class="col-sm-8 product">
+                            <h5 class="subtitle_1 m-3 mt-5">Plat du jour:</h5>
+                            {% for product in listOfProduct %}
+                                {% if product.typeOfProduct == 1 %}
+                                    <div class="col-sm-12 product__unit_product m-3" data-type-of-product="{{ product.typeOfProduct }}">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img width="100%" height="140px" src="{{ asset('img/imgProduct/'~product.pictures.namePicture~'.'~product.pictures.extensionPicture) }}" alt="{{ product.pictures.descriptionPicture }}"/>
+                                            </div>
+                                            <div class="col-sm-6 p-2">
+                                                <h6>{{ product.name }}</h6>
+                                                <p class="product__unit_product__ingredient">{{ product.ingredientList }}</p>
+                                                <p class="product__unit_product__presentation">{{ product.presentation }}</p>
+                                            </div>
+                                            <div class="col-sm-3 align-items-center justify-content-center d-flex">
+                                                <p class="product__unit_product__price">{{ product.price|format_currency('EUR', locale='fr') }}</p>
+                                            </div>
+                                        </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+
+                            <h5 class="subtitle_2 m-3 mt-5">Nos apéros:</h5>
+                            {% for product in listOfProduct %}
+                                {% if product.typeOfProduct == 2 %}
+                                    <div class="col-sm-12 product__unit_product m-3" data-type-of-product="{{ product.typeOfProduct }}">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img width="100%" height="140px" src="{{ asset('img/imgProduct/'~product.pictures.namePicture~'.'~product.pictures.extensionPicture) }}" alt="{{ product.pictures.descriptionPicture }}"/>
+                                            </div>
+                                            <div class="col-sm-6 p-2">
+                                                <h6>{{ product.name }}</h6>
+                                                <p class="product__unit_product__ingredient">{{ product.ingredientList }}</p>
+                                                <p class="product__unit_product__presentation">{{ product.presentation }}</p>
+                                            </div>
+                                            <div class="col-sm-3 align-items-center justify-content-center d-flex">
+                                                <p class="product__unit_product__price">{{ product.price|format_currency('EUR', locale='fr') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+                            <h5 class="subtitle_3 m-3 mt-5">Nos plats:</h5>
+                            {% for product in listOfProduct %}
+                                {% if product.typeOfProduct == 3 %}
+                                    <div class="col-sm-12 product__unit_product m-3" data-type-of-product="{{ product.typeOfProduct }}">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img width="100%" height="140px" src="{{ asset('img/imgProduct/'~product.pictures.namePicture~'.'~product.pictures.extensionPicture) }}" alt="{{ product.pictures.descriptionPicture }}"/>
+                                            </div>
+                                            <div class="col-sm-6 p-2">
+                                                <h6>{{ product.name }}</h6>
+                                                <p class="product__unit_product__ingredient">{{ product.ingredientList }}</p>
+                                                <p class="product__unit_product__presentation">{{ product.presentation }}</p>
+                                            </div>
+                                            <div class="col-sm-3 align-items-center justify-content-center d-flex">
+                                                <p class="product__unit_product__price">{{ product.price|format_currency('EUR', locale='fr') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+                            <h5 class="subtitle_4 m-3 mt-5">Nos salades:</h5>
+                            {% for product in listOfProduct %}
+                                {% if product.typeOfProduct == 4 %}
+                                    <div class="col-sm-12 product__unit_product m-3" data-type-of-product="{{ product.typeOfProduct }}">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img width="100%" height="140px" src="{{ asset('img/imgProduct/'~product.pictures.namePicture~'.'~product.pictures.extensionPicture) }}" alt="{{ product.pictures.descriptionPicture }}"/>
+                                            </div>
+                                            <div class="col-sm-6 p-2">
+                                                <h6>{{ product.name }}</h6>
+                                                <p class="product__unit_product__ingredient">{{ product.ingredientList }}</p>
+                                                <p class="product__unit_product__presentation">{{ product.presentation }}</p>
+                                            </div>
+                                            <div class="col-sm-3 align-items-center justify-content-center d-flex">
+                                                <p class="product__unit_product__price">{{ product.price|format_currency('EUR', locale='fr') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+                            <h5 class="subtitle_5 m-3 mt-5">Nos américains:</h5>
+                            {% for product in listOfProduct %}
+                                {% if product.typeOfProduct == 5 %}
+                                    <div class="col-sm-12 product__unit_product m-3" data-type-of-product="{{ product.typeOfProduct }}">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img width="100%" height="140px" src="{{ asset('img/imgProduct/'~product.pictures.namePicture~'.'~product.pictures.extensionPicture) }}" alt="{{ product.pictures.descriptionPicture }}"/>
+                                            </div>
+                                            <div class="col-sm-6 p-2">
+                                                <h6>{{ product.name }}</h6>
+                                                <p class="product__unit_product__ingredient">{{ product.ingredientList }}</p>
+                                                <p class="product__unit_product__presentation">{{ product.presentation }}</p>
+                                            </div>
+                                            <div class="col-sm-3 align-items-center justify-content-center d-flex">
+                                                <p class="product__unit_product__price">{{ product.price|format_currency('EUR', locale='fr') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+                            <h5 class="subtitle_6 m-3 mt-5">Nos sandwichs:</h5>
+                            {% for product in listOfProduct %}
+                                {% if product.typeOfProduct == 6 %}
+                                    <div class="col-sm-12 product__unit_product m-3" data-type-of-product="{{ product.typeOfProduct }}">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img width="100%" height="140px" src="{{ asset('img/imgProduct/'~product.pictures.namePicture~'.'~product.pictures.extensionPicture) }}" alt="{{ product.pictures.descriptionPicture }}"/>
+                                            </div>
+                                            <div class="col-sm-6 p-2">
+                                                <h6>{{ product.name }}</h6>
+                                                <p class="product__unit_product__ingredient">{{ product.ingredientList }}</p>
+                                                <p class="product__unit_product__presentation">{{ product.presentation }}</p>
+                                            </div>
+                                            <div class="col-sm-3 align-items-center justify-content-center d-flex">
+                                                <p class="product__unit_product__price">{{ product.price|format_currency('EUR', locale='fr') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+                            <h5 class="subtitle_7 m-3 mt-5">Nos boissons:</h5>
+                            {% for product in listOfProduct %}
+                                {% if product.typeOfProduct == 7 %}
+                                    <div class="col-sm-12 product__unit_product m-3" data-type-of-product="{{ product.typeOfProduct }}">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img width="100%" height="140px" src="{{ asset('img/imgProduct/'~product.pictures.namePicture~'.'~product.pictures.extensionPicture) }}" alt="{{ product.pictures.descriptionPicture }}"/>
+                                            </div>
+                                            <div class="col-sm-6 p-2">
+                                                <h6>{{ product.name }}</h6>
+                                                <p class="product__unit_product__ingredient">{{ product.ingredientList }}</p>
+                                                <p class="product__unit_product__presentation">{{ product.presentation }}</p>
+                                            </div>
+                                            <div class="col-sm-3 align-items-center justify-content-center d-flex">
+                                                <p class="product__unit_product__price">{{ product.price|format_currency('EUR', locale='fr') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+                            <h5 class="subtitle_8 m-3 mt-5">Nos biéres:</h5>
+                            {% for product in listOfProduct %}
+                                {% if product.typeOfProduct == 8 %}
+                                    <div class="col-sm-12 product__unit_product m-3" data-type-of-product="{{ product.typeOfProduct }}">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img width="100%" height="140px" src="{{ asset('img/imgProduct/'~product.pictures.namePicture~'.'~product.pictures.extensionPicture) }}" alt="{{ product.pictures.descriptionPicture }}"/>
+                                            </div>
+                                            <div class="col-sm-6 p-2">
+                                                <h6>{{ product.name }}</h6>
+                                                <p class="product__unit_product__ingredient">{{ product.ingredientList }}</p>
+                                                <p class="product__unit_product__presentation">{{ product.presentation }}</p>
+                                            </div>
+                                            <div class="col-sm-3 align-items-center justify-content-center d-flex">
+                                                <p class="product__unit_product__price">{{ product.price|format_currency('EUR', locale='fr') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                {% else %}
+                    <p>Désolé, il n'y a pas de liste de disponible.</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{%  endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('listOfProduct') }}
+{% endblock %}
