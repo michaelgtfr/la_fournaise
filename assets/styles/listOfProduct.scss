@@ -1,0 +1,43 @@
+$greenmousse: #aaaaaa;
+
+h4{
+    font-family: 'Varela Round', sans-serif;
+    font-size: 30px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.product{
+
+    h5{
+        font-family: 'Helvetica', sans-serif;
+        font-size: 24px;
+        text-decoration: underline;
+        display: none;
+    }
+    &__unit_product{
+        border: 1px $greenmousse solid;
+        border-radius: 20px;
+        img{
+            border-bottom-left-radius: 20px;
+            border-top-left-radius: 20px;
+        }
+        h6{
+            font-family: 'Varela Round', sans-serif;
+            font-size: 26px;
+        }
+        &__ingredient{
+            font-family: 'Helvetica', sans-serif;
+            color: $greenmousse;
+            font-size: 14px;
+        }
+        &__presentation{
+            font-family: 'Helvetica', sans-serif;
+            font-size: 14px;
+        }
+        &__price{
+            font-family: "Helvetica", sans-serif;
+            font-size: 24px;
+        }
+    }
+}
