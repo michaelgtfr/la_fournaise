@@ -2,13 +2,18 @@ default:
   suites:
     default:
       contexts:
-        - App\Tests\Behat\FeaturesContext
+        - App\Tests\Behat\FeaturesContext:
+            kernel: '@kernel'
 
   extensions:
     FriendsOfBehat\SymfonyExtension:
       bootstrap: tests/bootstrap.php
     Behat\MinkExtension:
       base_url: 'http://127.0.0.1:8000/'
+      selenium2:
+        wd_host: http://192.168.0.15:4444/
       sessions:
+        javascript:
+          selenium2: ~
         symfony:
           symfony: ~
