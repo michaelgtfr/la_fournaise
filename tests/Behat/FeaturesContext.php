@@ -10,10 +10,12 @@ namespace App\Tests\Behat;
 
 
 use App\Entity\Location;
+use App\Entity\PictureProduct;
+use App\Entity\Product;
 use Behat\Behat\Context\Context;
 use Behat\MinkExtension\Context\MinkContext;
 use DAMA\DoctrineTestBundle\Doctrine\DBAL\StaticDriver;
-use function PHPUnit\Framework\assertEquals;
+use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
@@ -46,7 +48,7 @@ class FeaturesContext extends MinkContext implements Context
      */
     public static function beforeSuite()
     {
-        StaticDriver::setKeepStaticConnections(true);
+        StaticDriver::setKeepStaticConnections(false);
     }
 
     /**
@@ -54,8 +56,8 @@ class FeaturesContext extends MinkContext implements Context
      */
     public function beforeScenario()
     {
-        StaticDriver::beginTransaction();
         $this->locationData();
+        StaticDriver::beginTransaction();
     }
 
     /**
@@ -64,6 +66,7 @@ class FeaturesContext extends MinkContext implements Context
     public function afterScenario()
     {
         StaticDriver::rollBack();
+        $this->purger();
         $this->session->restart();
     }
 
@@ -77,18 +80,26 @@ class FeaturesContext extends MinkContext implements Context
 
     public function locationData()
     {
-        $location = new Location();
-        $location->setDay(1);
-        $location->setAddress('testAddress');
-        $location->setCity('testCity');
-        $location->setBeginHour(new \DateTime());
-        $location->setEndTime(new \DateTime());
-        $location->setLatitude(50.000);
-        $location->setLongitude(1.6000);
+        for ($i = 0; $i<=6; $i++) {
+            $location = new Location();
+            $location->setDay($i);
+            $location->setAddress('testAddress');
+            $location->setCity('testCity');
+            $location->setBeginHour(new \DateTime());
+            $location->setEndTime(new \DateTime());
+            $location->setLatitude(50.000);
+            $location->setLongitude(1.6000);
 
-        $manager = $this->em->getManager();
-        $manager->persist($location);
-        $manager->flush();
+            $manager = $this->em->getManager();
+            $manager->persist($location);
+            $manager->flush();
+        }
+    }
+
+    public function purger()
+    {
+        $purger = new ORMPurger($this->em->getManager());
+        $purger->purge();
     }
 
     /**
@@ -126,5 +137,39 @@ class FeaturesContext extends MinkContext implements Context
         $this->assertResponseContains('leaflet-marker-icon');
         $verificationOfOperationOfCallMarker = $this->verificationOfNumberMarkerDisplay +1;
         $this->assertResponseContains('data-number-marker-total-call=\"' . $verificationOfOperationOfCallMarker .'\"');
+    }
+
+    /**
+     * @Given I want see the menu
+     */
+    public function iWantSeeTheMenu()
+    {
+        $product = new product();
+        $product->setName('name product');
+        $product->setIngredientList('ingredient product');
+        $product->setPresentation('presentation product');
+        $product->setPrice(1);
+        $product->setTypeOfProduct(1);
+        $product->setStatus(1);
+
+
+        $picture = new PictureProduct();
+        $picture->setNamePicture('namePicture');
+        $picture->setExtensionPicture('jpg');
+        $picture->setDescriptionPicture('description picture');
+
+        $product->setPictures($picture);
+        $manager = $this->em->getManager();
+        $manager->persist($product);
+        $manager->flush();
+    }
+
+    /**
+     * @When I go further down the page
+     */
+    public function iGoFurtherDownThePage()
+    {
+        $this->getSession()->executeScript("scroll(0,300);");
+        $this->getSession()->wait(5000);
     }
 }
