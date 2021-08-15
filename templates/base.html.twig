@@ -54,8 +54,46 @@
             </div>
         </nav>
         {% block body %}{% endblock %}
-        <footer>
-            <a href="https://www.facebook.com/profile.php?id=100070433298238"><i class="fab fa-facebook-square fa-lg"></i></a>
+        <footer class="row d-flex align-items-center mt-5">
+            <div class="first_block_footer col-sm-4">
+                <nav class="p-2">
+                    <ul>
+                        <li class="p-1">
+                            <a href="#">Accueil</a>
+                        </li>
+                        <li class="p-1">
+                            <a  href="#">Le menu</a>
+                        </li>
+                        <li class="p-1">
+                            <a  href="#">Connexion</a>
+                        </li>
+                        <li class="p-1">
+                            <a  href="#">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="second_block_footer col-sm-4">
+                <img width="100%" src="{{ asset('img/logo_la_founaise_sans_fond.png') }}" alt="logo_la_fournaise"/>
+            </div>
+            <div class="third_block_footer col-3 offset-sm-1">
+                <nav class="p-2">
+                    <ul>
+                        <li class="p-1">
+                            <a href="https://www.facebook.com/profile.php?id=100070433298238"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        </li>
+                        <li class="p-1">
+                            <a href="#"><i class="fas fa-at"></i> joel97462@gmail.com</a>
+                        </li>
+                        <li class="p-1">
+                            <a href="#"><i class="fas fa-phone-alt"></i> 07xxxxxxxx</a>
+                        </li>
+                        <li class="p-1">
+                            <a href="#"><i class="fas fa-file-invoice"></i> Charte d'utilisation</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </footer>
     </body>
     {% block javascripts %}
