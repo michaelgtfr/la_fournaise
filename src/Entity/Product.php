@@ -71,6 +71,11 @@ class Product
      */
     private $pictures;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $typeOfProduct;
+
     public function __construct()
     {
         $this->detailOrders = new ArrayCollection();
@@ -93,14 +98,14 @@ class Product
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPrice(): ?float
     {
-        return $this->price;
+        return $this->price/100;
     }
 
     public function setPrice(int $price): self
     {
-        $this->price = $price;
+        $this->price = $price*100;
 
         return $this;
     }
@@ -179,6 +184,18 @@ class Product
     public function setPictures(?PictureProduct $pictures): self
     {
         $this->pictures = $pictures;
+
+        return $this;
+    }
+
+    public function getTypeOfProduct(): ?int
+    {
+        return $this->typeOfProduct;
+    }
+
+    public function setTypeOfProduct(int $typeOfProduct): self
+    {
+        $this->typeOfProduct = $typeOfProduct;
 
         return $this;
     }
