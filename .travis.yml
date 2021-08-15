@@ -1,9 +1,10 @@
 language: php
 
-sudo: false
+dist: xenial
 
 services:
   - mysql
+  - xvfb
 
 cache:
   directories:
@@ -19,8 +20,9 @@ env:
     - NODE_VERSION="14.17"
     - PHPUNIT_FLAGS="-v"
     - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
+    - MOZ_HEADLESS=1
 
-matrix:
+jobs:
   fast_finish: true
   include:
     - php: 7.3
@@ -36,16 +38,30 @@ before_install:
   - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
   - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
   - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.29.1/geckodriver-v0.29.1-linux64.tar.gz
+
+  before-script:
+    - "export DISPLAY=:99.0"
+    - "sh -e /etc/init.d/xvfb start"
+    - sleep 3
+    - rackup
+    - sleep 3
 
 install:
   - if [[ "$COMPOSER_FLAGS" == *"--prefer-lowest"* ]]; then composer update --prefer-dist --no-interaction --prefer-stable --quiet; fi
   - composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction
   - ./vendor/bin/simple-phpunit install
+  - composer require --dev dbrekelmans/bdi
+  - ./vendor/bin/bdi detect drivers
 
 script:
   - yarn install
   - yarn encore dev
   - php bin/console cache:clear --env=tests
+  - wget https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar &> /dev/null
+  - java -jar selenium-server-standalone-3.141.59.jar &
+  - sudo cp geckodriver /usr/bin
+  - sleep 20s
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:update --force --env=test
   # simple-phpunit is the PHPUnit wrapper provided by the PHPUnit Bridge component and
