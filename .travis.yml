@@ -22,6 +22,7 @@ env:
     - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
     - MOZ_HEADLESS=1
 
+
 jobs:
   fast_finish: true
   include:
@@ -68,3 +69,4 @@ script:
   # it helps with testing legacy code and deprecations (composer require symfony/phpunit-bridge)
   - vendor/bin/simple-phpunit $PHPUNIT_FLAGS
   - vendor/bin/behat
+

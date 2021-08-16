@@ -18,3 +18,4 @@ Feature:
     Given I am on homepage
     When I click on the card
     Then I should see the location of the day on the map
+
