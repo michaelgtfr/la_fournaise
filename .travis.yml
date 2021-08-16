@@ -62,6 +62,7 @@ script:
   - java -jar selenium-server-standalone-3.141.59.jar & 
   - sudo cp geckodriver /usr/bin
   - sleep 20s
+  - symfony server:start -d
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:update --force --env=test
   # simple-phpunit is the PHPUnit wrapper provided by the PHPUnit Bridge component and
