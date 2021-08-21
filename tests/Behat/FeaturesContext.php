@@ -9,14 +9,17 @@
 namespace App\Tests\Behat;
 
 
+use App\Entity\ApplicationInformation;
 use App\Entity\Location;
 use App\Entity\PictureProduct;
 use App\Entity\Product;
+use App\Entity\User;
 use Behat\Behat\Context\Context;
 use Behat\MinkExtension\Context\MinkContext;
 use DAMA\DoctrineTestBundle\Doctrine\DBAL\StaticDriver;
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * Created by PhpStorm.
@@ -36,11 +39,14 @@ class FeaturesContext extends MinkContext implements Context
 
     private $verificationOfNumberMarkerDisplay;
 
-    public function __construct(KernelInterface $kernel, \Behat\Mink\Session $session)
+    private $encoder;
+
+    public function __construct(KernelInterface $kernel, \Behat\Mink\Session $session, UserPasswordEncoderInterface $encoder)
     {
         $this->kernel = $kernel;
         $this->em = $this->kernel->getContainer()->get('doctrine');
         $this->session = $session;
+        $this->encoder = $encoder;
     }
 
     /**
@@ -172,4 +178,47 @@ class FeaturesContext extends MinkContext implements Context
         $this->getSession()->executeScript("scroll(0,300);");
         $this->getSession()->wait(5000);
     }
+
+    /**
+    * @Given I am logged in as an admin
+    */
+    public function iAmLoggedInAsAnAdmin()
+    {
+        $this->adminUserdata('admin', 'admin');
+        $this->applicationInformationData();
+
+        $this->visitPath('/login');
+        $this->fillField('email', 'admin');
+        $this->fillField('password', 'admin');
+        $this->pressButton('Valider');
+    }
+
+    public function adminUserdata($email, $password)
+    {
+        $user = new User();
+        $user->setName('nameTest');
+        $user->setNameOrderWithdrawal('nameTest');
+        $user->setNumberCellphone(0700000000);
+        $user->setConfirmationKey(1);
+        $user->setConfirmationAccount(1);
+        $user->setPassword($this->encoder->encodePassword($user, $password));
+        $user->setEmail($email);
+        $user->setRoles(array('ROLE_ADMIN'));
+        $em = $this->em->getManager();
+        $em->persist($user);
+        $em->flush();
+    }
+
+    public function applicationInformationData()
+    {
+        $applicationInformation = new ApplicationInformation();
+        $applicationInformation->setEmailApplication('email_test@gmail.com');
+        $applicationInformation->setFacebookApplication('facebooktest');
+        $applicationInformation->setPhoneNumberApplication(0700000000);
+
+        $em = $this->em->getManager();
+        $em->persist($applicationInformation);
+        $em->flush();
+    }
+
 }
