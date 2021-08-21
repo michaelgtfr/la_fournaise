@@ -29,17 +29,25 @@
         </button>
         <div class="collapse navbar-collapse row" id="navbarNavAltMarkup">
             <div class="navbar-nav p-3 justify-content-around">
-                <a class="nav-item nav-link active" href="#">Accueil</a>
-                <a class="nav-item nav-link" href="#">Le menu</a>
-                <a class="nav-item nav-link" href="#">Connexion</a>
-                <a class="nav-item nav-link" href="#">Contact</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="nav-item nav-link active" href="#">Mes données</a>
+                    <a class="nav-item nav-link" href="#">Le menu</a>
+                    <a class="nav-item nav-link" href="#">Les coordonnées</a>
+                    <a class="nav-item nav-link" href="#">Deconnexion</a>
+                {% else %}
+                    <a class="nav-item nav-link active" href="#">Accueil</a>
+                    <a class="nav-item nav-link" href="#">Le menu</a>
+                    <a class="nav-item nav-link" href="#">Connexion</a>
+                    <a class="nav-item nav-link" href="#">Contact</a>
+                {% endif %}
+
             </div>
         </div>
     </nav>
 
     {% block body %}{% endblock %}
 
-    <footer class="row d-flex align-items-center mt-5">
+    <footer class="row d-flex align-items-center">
         <div class="first_block_footer col-sm-4">
             <nav class="p-2">
                 <ul>
@@ -62,22 +70,41 @@
             <img width="100%" src="{{ asset('img/logo_la_founaise_sans_fond.png') }}" alt="logo_la_fournaise"/>
         </div>
         <div class="third_block_footer col-3 offset-sm-1">
-            <nav class="p-2">
-                <ul>
-                    <li class="p-1">
-                        <a href="https://www.facebook.com/profile.php?id=100070433298238"><i class="fab fa-facebook-f"></i> Facebook</a>
-                    </li>
-                    <li class="p-1">
-                        <a href="#"><i class="fas fa-at"></i> joel97462@gmail.com</a>
-                    </li>
-                    <li class="p-1">
-                        <a href="#"><i class="fas fa-phone-alt"></i> 07xxxxxxxx</a>
-                    </li>
-                    <li class="p-1">
-                        <a href="#"><i class="fas fa-file-invoice"></i> Charte d'utilisation</a>
-                    </li>
-                </ul>
-            </nav>
+            {% if is_granted('ROLE_ADMIN') %}
+                <nav class="p-2">
+                    <ul>
+                        <li class="p-1">
+                            <a href="#">Mes données</a>
+                        </li>
+                        <li class="p-1">
+                            <a  href="#">Le menu</a>
+                        </li>
+                        <li class="p-1">
+                            <a  href="#">les coordonnées/ horaires</a>
+                        </li>
+                        <li class="p-1">
+                            <a  href="#">deconnexion</a>
+                        </li>
+                    </ul>
+                </nav>
+            {% else %}
+                <nav class="p-2">
+                    <ul>
+                        <li class="p-1">
+                            <a href="#">Accueil</a>
+                        </li>
+                        <li class="p-1">
+                            <a  href="#">Le menu</a>
+                        </li>
+                        <li class="p-1">
+                            <a  href="#">Connexion</a>
+                        </li>
+                        <li class="p-1">
+                            <a  href="#">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            {% endif %}
         </div>
     </footer>
 </body>
