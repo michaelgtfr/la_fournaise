@@ -12,6 +12,7 @@ cache:
     - $HOME/symfony-bridge/.phpunit
 
 addons:
+  chrome: stable
   firefox: latest
 
 env:
