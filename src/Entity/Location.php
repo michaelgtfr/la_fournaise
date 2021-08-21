@@ -50,6 +50,16 @@ class Location
      */
     private $endTime;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $longitude;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $latitude;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -111,6 +121,30 @@ class Location
     public function setEndTime(\DateTimeInterface $endTime): self
     {
         $this->endTime = $endTime;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?float
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(float $longitude): self
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getLatitude(): ?float
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(float $latitude): self
+    {
+        $this->latitude = $latitude;
 
         return $this;
     }

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('base') }}
+    {% endblock %}
+</head>
+<body>
+    <header class="banner row">
+        <div class="col-lg-3">
+            <a class="navbar-brand position-absolute" href="#">
+                <img src="{{ asset('img/logo_la_founaise_sans_fond.png') }}" width="auto" height="70px"
+                     class="d-inline-block align-top" alt="logo la fournaise">
+            </a>
+        </div>
+        <div class="col-lg-12 text-center">
+            <h1 class="text-center banner__title p-2">La Fournaise<i class="fas fa-truck"></i></h1>
+        </div>
+    </header>
+
+    <nav class="navigation fixed-bottom sticky-top navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse row" id="navbarNavAltMarkup">
+            <div class="navbar-nav p-3 justify-content-around">
+                <a class="nav-item nav-link active" href="#">Accueil</a>
+                <a class="nav-item nav-link" href="#">Le menu</a>
+                <a class="nav-item nav-link" href="#">Connexion</a>
+                <a class="nav-item nav-link" href="#">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    {% block body %}{% endblock %}
+
+    <footer class="row d-flex align-items-center mt-5">
+        <div class="first_block_footer col-sm-4">
+            <nav class="p-2">
+                <ul>
+                    <li class="p-1">
+                        <a href="#">Accueil</a>
+                    </li>
+                    <li class="p-1">
+                        <a  href="#">Le menu</a>
+                    </li>
+                    <li class="p-1">
+                        <a  href="#">Connexion</a>
+                    </li>
+                    <li class="p-1">
+                        <a  href="#">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="second_block_footer col-sm-4">
+            <img width="100%" src="{{ asset('img/logo_la_founaise_sans_fond.png') }}" alt="logo_la_fournaise"/>
+        </div>
+        <div class="third_block_footer col-3 offset-sm-1">
+            <nav class="p-2">
+                <ul>
+                    <li class="p-1">
+                        <a href="https://www.facebook.com/profile.php?id=100070433298238"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    </li>
+                    <li class="p-1">
+                        <a href="#"><i class="fas fa-at"></i> joel97462@gmail.com</a>
+                    </li>
+                    <li class="p-1">
+                        <a href="#"><i class="fas fa-phone-alt"></i> 07xxxxxxxx</a>
+                    </li>
+                    <li class="p-1">
+                        <a href="#"><i class="fas fa-file-invoice"></i> Charte d'utilisation</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+{% block javascripts %}
+    {{ encore_entry_script_tags('base') }}
+{% endblock %}
+</html>

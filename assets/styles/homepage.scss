@@ -1,20 +1,32 @@
-.location
-{
-  &__title
-  {
+.location {
+  &__title {
     font-family: 'Varela Round', sans-serif;
     text-decoration: underline;
     font-weight: bold;
   }
 
-  img
-  {
+  a{
+    color: white;
+  }
+
+  img {
     height: 200px;
   }
 
-  p, h5
-  {
+  h5 {
     font-weight: bold;
     font-size: 24px;
+  }
+
+  &__presentation {
+    border: none;
+    font-family: 'georgia', sans-serif;
+    color: #444;
+  }
+
+  #mapid {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
