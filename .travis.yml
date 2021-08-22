@@ -39,8 +39,10 @@ before_install:
   - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
   - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
   - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
-  - wget https://github.com/mozilla/geckodriver/releases/download/v0.29.1/geckodriver-v0.29.1-linux64.tar.gz &
-  - sudo cp geckodriver /usr/bin
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.29.1/geckodriver-v0.29.1-linux64.tar.gz
+  - mkdir geckodriver
+  - tar -xzf geckodriver-v0.29.1-linux64.tar.gz -C geckodriver
+  - export PATH=$PATH:$PWD/geckodriver
 
 
 install:
