@@ -39,7 +39,9 @@ before_install:
   - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
   - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
   - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
-  - wget https://github.com/mozilla/geckodriver/releases/download/v0.29.1/geckodriver-v0.29.1-linux64.tar.gz
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.29.1/geckodriver-v0.29.1-linux64.tar.gz &
+  - sudo cp geckodriver /usr/bin &
+  - geckodriver
 
 
 install:
@@ -58,8 +60,6 @@ script:
   - php bin/console cache:clear --env=test
   - wget https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar &> /dev/null
   - java -jar selenium-server-standalone-3.141.59.jar &
-  - sudo cp geckodriver /usr/bin
-  - geckodriver
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:update --force --env=test
   # simple-phpunit is the PHPUnit wrapper provided by the PHPUnit Bridge component and
