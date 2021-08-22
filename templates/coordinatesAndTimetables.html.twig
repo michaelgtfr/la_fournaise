@@ -1,0 +1,87 @@
+{% extends 'baseTwo.html.twig' %}
+
+{%  block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('coordinatesAndTimetables') }}
+{%  endblock %}
+
+{% block body %}
+<section class="container coordinates-timetables mt-4">
+    <div class="row">
+        <div class="text-center p-4">
+            <h5>Les coordonnées et horaires:</h5>
+        </div>
+<!-- display the location data in the card -->
+            {%  for location in locations %}
+                <div class="card col-sm-4">
+                    <div class="row m-2">
+                        <div class="card-header day-block col-sm-12 text-center">
+                            {% if location.day == 1 %}
+                                <h5>Lundi</h5>
+                            {% elseif location.day == 2 %}
+                                <h5>Mardi</h5>
+                            {% elseif location.day == 3 %}
+                                <h5>Mercredi</h5>
+                            {% elseif location.day == 4 %}
+                                <h5>Jeudi</h5>
+                            {% elseif location.day == 5 %}
+                                <h5>Vendredi</h5>
+                            {% elseif location.day == 6 %}
+                                <h5>Samedi</h5>
+                            {% else %}
+                                <h5>Dimanche</h5>
+                            {% endif %}
+                        </div>
+                        <div class="card-body col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h6>Adresse:</h6>
+                                    <p>{{ location.address }}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <h6>Ville</h6>
+                                    <p>{{ location.city }}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <h6>Heures d'ouverture:</h6>
+                                        <p>{{ location.beginHour|date("H:i") }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <h6>Heure de fermeture:</h6>
+                                    <p>{{ location.endTime|date("H:i") }}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <h6>Latitude</h6>
+                                    <p>{{  location.latitude }}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <h6>Longitude:</h6>
+                                    <p>{{ location.longitude }}</p>
+                                </div>
+                                <div class="col-sm-12 text-center m-2">
+                                    <button class="btn btn-warning" type="submit">Modifier</button>
+                                </div>
+                                <div class="col-sm-12 text-center m-2">
+                                    <button class="btn btn-danger" type="submit">Supprimer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        <div class="col-sm-12 text-center p-4">
+            <p>Vous pouvez ajouter un jour en cliquant sur le bouton ci-dessous</p>
+            <button class="btn btn-primary" type="submit">Ajouter</button>
+        </div>
+    </div>
+</section>
+
+
+{%  endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('coordinatesAndTimetables') }}
+{% endblock %}
