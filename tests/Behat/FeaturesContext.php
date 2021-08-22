@@ -220,5 +220,4 @@ class FeaturesContext extends MinkContext implements Context
         $em->persist($applicationInformation);
         $em->flush();
     }
-
 }
