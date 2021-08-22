@@ -49,5 +49,4 @@ class AdminDashboardControllerTest extends WebTestCase
 
         $this->assertEquals('Mes données', $crawler->filter('h2')->text());
     }
-
 }
