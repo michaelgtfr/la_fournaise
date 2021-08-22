@@ -48,6 +48,13 @@ install:
   - composer require --dev dbrekelmans/bdi
   - ./vendor/bin/bdi detect drivers
 
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+  - rackup  # start a Web server
+  - sleep 3 # give Web server some time to bind to sockets, etc
+  
 script:
   - yarn install
   - yarn encore dev
@@ -55,7 +62,6 @@ script:
   - wget https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar &> /dev/null
   - java -jar selenium-server-standalone-3.141.59.jar &
   - sudo cp geckodriver /usr/bin
-  - bash symfony server:start -d
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:update --force --env=test
   # simple-phpunit is the PHPUnit wrapper provided by the PHPUnit Bridge component and
