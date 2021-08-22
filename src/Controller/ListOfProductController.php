@@ -18,7 +18,7 @@ use Twig\Environment;
 class ListOfProductController
 {
     /**
-     * @Route("/listofproduct", "app_list_of_product")
+     * @Route("/listofproduct", name="app_list_of_product")
      * @param EntityManagerInterface $em
      * @param Environment $twig
      * @return Response
