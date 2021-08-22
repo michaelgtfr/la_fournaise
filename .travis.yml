@@ -3,6 +3,7 @@ language: php
 dist: xenial
 
 services:
+  - xvfb
   - mysql
 
 cache:
