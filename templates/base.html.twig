@@ -46,9 +46,9 @@
             </button>
             <div class="collapse navbar-collapse row" id="navbarNavAltMarkup">
                 <div class="navbar-nav p-3 justify-content-around">
-                    <a class="nav-item nav-link active" href="#">Accueil</a>
-                    <a class="nav-item nav-link" href="#">Le menu</a>
-                    <a class="nav-item nav-link" href="#">Connexion</a>
+                    <a class="nav-item nav-link active" href="{{ path('app_homepage') }}">Accueil</a>
+                    <a class="nav-item nav-link" href="{{ path('app_list_of_product') }}">Le menu</a>
+                    <a class="nav-item nav-link" href="{{ path('app_login') }}">Connexion</a>
                     <a class="nav-item nav-link" href="#">Contact</a>
                 </div>
             </div>
@@ -59,13 +59,13 @@
                 <nav class="p-2">
                     <ul>
                         <li class="p-1">
-                            <a href="#">Accueil</a>
+                            <a href="{{ path('app_homepage') }}">Accueil</a>
                         </li>
                         <li class="p-1">
-                            <a  href="#">Le menu</a>
+                            <a  href="{{ path('app_list_of_product') }}">Le menu</a>
                         </li>
                         <li class="p-1">
-                            <a  href="#">Connexion</a>
+                            <a  href="{{ path('app_login') }}">Connexion</a>
                         </li>
                         <li class="p-1">
                             <a  href="#">Contact</a>
