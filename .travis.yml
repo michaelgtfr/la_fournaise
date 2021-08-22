@@ -23,7 +23,7 @@ env:
     - MOZ_HEADLESS=1
 
 
-jobs:
+matrix:
   fast_finish: true
   include:
     - php: 7.3
