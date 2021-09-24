@@ -49,28 +49,59 @@
                     <a class="nav-item nav-link active" href="{{ path('app_homepage') }}">Accueil</a>
                     <a class="nav-item nav-link" href="{{ path('app_list_of_product') }}">Le menu</a>
                     <a class="nav-item nav-link" href="{{ path('app_login') }}">Connexion</a>
-                    <a class="nav-item nav-link" href="#">Contact</a>
+                    <a class="nav-item nav-link" href="{{ path('app_contact') }}">Contact</a>
                 </div>
             </div>
         </nav>
+
+        <!--flash message-->
+        {% for message in app.flashes('success') %}
+            <div class = "alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% for message in app.flashes('error') %}
+            <div class = "alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+
         {% block body %}{% endblock %}
         <footer class="row d-flex align-items-center mt-5">
             <div class="first_block_footer col-sm-4">
                 <nav class="p-2">
-                    <ul>
-                        <li class="p-1">
-                            <a href="{{ path('app_homepage') }}">Accueil</a>
-                        </li>
-                        <li class="p-1">
-                            <a  href="{{ path('app_list_of_product') }}">Le menu</a>
-                        </li>
-                        <li class="p-1">
-                            <a  href="{{ path('app_login') }}">Connexion</a>
-                        </li>
-                        <li class="p-1">
-                            <a  href="#">Contact</a>
-                        </li>
-                    </ul>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <ul>
+                            <li class="p-1">
+                                <a href="{{ path('app_dashboard_admin') }}">Mes données</a>
+                            </li>
+                            <li class="p-1">
+                                <a  href="{{ path('app_list_of_product') }}">Le menu</a>
+                            </li>
+                            <li class="p-1">
+                                <a  href="{{ path('app_admin_coordinates_and_timetables') }}">Les coordonnées</a>
+                            </li>
+                            <li class="p-1">
+                                <a  href="{{ path('app_logout') }}">Déconnexion</a>
+                            </li>
+                        </ul>
+                    {% else %}
+                        <ul>
+                            <li class="p-1">
+                                <a href="{{ path('app_homepage') }}">Accueil</a>
+                            </li>
+                            <li class="p-1">
+                                <a  href="{{ path('app_list_of_product') }}">Le menu</a>
+                            </li>
+                            <li class="p-1">
+                                <a  href="{{ path('app_login') }}">Connexion</a>
+                            </li>
+                            <li class="p-1">
+                                <a  href="{{ path('app_contact') }}">Contact</a>
+                            </li>
+                        </ul>
+                    {%  endif %}
                 </nav>
             </div>
             <div class="second_block_footer col-sm-4">
