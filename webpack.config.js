@@ -26,6 +26,7 @@ Encore
     .addEntry('login', './assets/login.js')
     .addEntry('adminDashboard', './assets/adminDashboard.js')
     .addEntry('coordinatesAndTimetables', './assets/coordinatesAndTimetables.js')
+    .addEntry('contact', './assets/contact.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
