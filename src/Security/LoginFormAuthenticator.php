@@ -30,6 +30,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     private $urlGenerator;
     private $csrfTokenManager;
     private $passwordEncoder;
+    private $user;
 
     public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -67,13 +68,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
+        $this->user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
 
-        if (!$user) {
+        if (!$this->user) {
             throw new UsernameNotFoundException('Email could not be found.');
         }
 
-        return $user;
+        return $this->user;
     }
 
     public function checkCredentials($credentials, UserInterface $user)
@@ -95,7 +96,15 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('app_dashboard_admin'));
+        foreach ($this->user->getRoles() as $value) {
+            if ($value === 'ROLE_ADMIN') {
+                return new RedirectResponse($this->urlGenerator->generate('app_dashboard_admin'));
+            }
+        }
+
+        return new RedirectResponse($this->urlGenerator->generate('app_dashboard_client', [
+            'id' => $this->user->getId(),
+            ]));
     }
 
     protected function getLoginUrl()
