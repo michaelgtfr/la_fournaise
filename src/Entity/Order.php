@@ -65,14 +65,14 @@ class Order
         return $this->id;
     }
 
-    public function getTotalPrice(): ?int
+    public function getTotalPrice(): ?float
     {
-        return $this->totalPrice;
+        return $this->totalPrice/100;
     }
 
     public function setTotalPrice(int $totalPrice): self
     {
-        $this->totalPrice = $totalPrice;
+        $this->totalPrice = $totalPrice*100;
 
         return $this;
     }
