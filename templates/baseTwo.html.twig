@@ -34,6 +34,12 @@
                     <a class="nav-item nav-link" href="{{ path('app_list_of_product') }}">Le menu</a>
                     <a class="nav-item nav-link" href="{{ path('app_admin_coordinates_and_timetables') }}">Les coordonnées</a>
                     <a class="nav-item nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
+                {% elseif  is_granted('ROLE_USER')%}
+                    <a class="nav-item nav-link active" href="{{ path('app_homepage') }}">Accueil</a>
+                    <a class="nav-item nav-link active" href="{{ path('app_dashboard_client', {'id': user.id}) }}">Mes données</a>
+                    <a class="nav-item nav-link" href="{{ path('app_list_of_product') }}">Le menu</a>
+                    <a class="nav-item nav-link" href="{{ path('app_contact') }}">Contact</a>
+                    <a class="nav-item nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
                 {% else %}
                     <a class="nav-item nav-link active" href="{{ path('app_homepage') }}">Accueil</a>
                     <a class="nav-item nav-link" href="{{ path('app_list_of_product') }}">Le menu</a>
@@ -76,6 +82,24 @@
                         </li>
                         <li class="p-1">
                             <a  href="{{ path('app_logout') }}">Déconnexion</a>
+                        </li>
+                    </ul>
+                {% elseif  is_granted('ROLE_USER')%}
+                    <ul>
+                        <li class="p-1">
+                            <a href="{{ path('app_homepage') }}">Accueil</a>
+                        </li>
+                        <li class="p-1">
+                            <a  href="{{ path('app_list_of_product') }}">Le menu</a>
+                        </li>
+                        <li class="p-1">
+                            <a  href="{{ path('app_logout') }}">Déconnexion</a>
+                        </li>
+                        <li class="p-1">
+                            <a  href="{{ path('app_contact') }}">Contact</a>
+                        </li>
+                        <li class="p-1">
+                            <a  href="{{ path('app_dashboard_client', {'id': user.id}) }}">Mes données</a>
                         </li>
                     </ul>
                 {% else %}
