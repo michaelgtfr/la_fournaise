@@ -61,7 +61,7 @@
                                     <p>{{ location.longitude }}</p>
                                 </div>
                                 <div class="col-sm-12 text-center m-2">
-                                    <button class="btn btn-warning" type="submit">Modifier</button>
+                                    <a class="btn btn-warning" href={{ path('app_update_coordinates_timetables', {'id': location.id}) }}>Modifier</a>
                                 </div>
                                 <div class="col-sm-12 text-center m-2">
                                     <button class="btn btn-danger" type="submit">Supprimer</button>
