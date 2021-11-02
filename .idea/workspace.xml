@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4d580140-59e5-4e67-8699-b58d851d1b8c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Location.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Location.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/coordinatesAndTimetables.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coordinatesAndTimetables.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/register.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,33 +31,25 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/updateCoordinatesAndTimetables.html.twig">
+        <entry file="file://$PROJECT_DIR$/src/Controller/DeleteCoordinatesAndTimetablesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+            <state relative-caret-position="221">
+              <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
               <folding>
-                <element signature="e#12#29#0#Twig" expanded="true" />
+                <element signature="e#117#141#0#PHP" expanded="true" />
+                <element signature="e#1180#1218#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Entity/Location.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Controller/UpdateCoordinatesAndTimetablesController.php">
+        <entry file="file://$PROJECT_DIR$/templates/coordinatesAndTimetables.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
+            <state relative-caret-position="413">
+              <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
               <folding>
-                <element signature="e#117#141#0#PHP" expanded="true" />
+                <element signature="e#12#29#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,7 +63,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/assets/styles/coordinatesAndTimetables.scss" />
         <option value="$PROJECT_DIR$/tests/Controller/CoordinatesAndTimetablesControllerTest.php" />
         <option value="$PROJECT_DIR$/tests/Behat/FeaturesContext.php" />
         <option value="$PROJECT_DIR$/src/Controller/CoordinatesAndTimetablesController.php" />
@@ -120,11 +108,12 @@
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/templates/register.html.twig" />
         <option value="$PROJECT_DIR$/assets/styles/updateCoordinatesAndTimetables.scss" />
-        <option value="$PROJECT_DIR$/templates/coordinatesAndTimetables.html.twig" />
         <option value="$PROJECT_DIR$/templates/updateCoordinatesAndTimetables.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/LocationForm.php" />
         <option value="$PROJECT_DIR$/src/Entity/Location.php" />
         <option value="$PROJECT_DIR$/src/Controller/UpdateCoordinatesAndTimetablesController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/DeleteCoordinatesAndTimetablesController.php" />
+        <option value="$PROJECT_DIR$/templates/coordinatesAndTimetables.html.twig" />
       </list>
     </option>
   </component>
@@ -510,12 +499,12 @@
       <workItem from="1635761302549" duration="9460000" />
       <workItem from="1635830586570" duration="2023000" />
       <workItem from="1635840505040" duration="6123000" />
-      <workItem from="1635856209010" duration="9379000" />
+      <workItem from="1635856209010" duration="10942000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="637768000" />
+    <option name="totallyTimeSpent" value="639331000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -544,7 +533,7 @@
       <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="4" side_tool="true" weight="0.3295302" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8894908" visible="true" weight="0.22684564" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8894908" visible="true" weight="0.22751679" />
       <window_info id="Structure" order="1" sideWeight="0.11050921" side_tool="true" weight="0.13059701" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -571,16 +560,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Controller/AdminDashboardController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-          <folding>
-            <element signature="e#117#155#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/security/login.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -809,16 +788,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/RegisterController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="37" />
-          <folding>
-            <element signature="e#34#54#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/RegisterForm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -918,14 +887,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/coordinatesAndTimetables.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Form/LocationForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-          <folding>
-            <element signature="e#12#29#0#Twig" expanded="true" />
-            <element signature="e#3132#3165#0#Twig" expanded="true" />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="28" column="44" lean-forward="true" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -933,13 +898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/LocationForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="28" column="44" lean-forward="true" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -953,12 +911,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/RegisterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+          <folding>
+            <element signature="e#34#54#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/UpdateCoordinatesAndTimetablesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
+        <state relative-caret-position="241">
+          <caret line="27" column="98" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="98" />
           <folding>
             <element signature="e#117#141#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/DeleteCoordinatesAndTimetablesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
+          <folding>
+            <element signature="e#117#141#0#PHP" expanded="true" />
+            <element signature="e#1180#1218#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/coordinatesAndTimetables.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
+          <folding>
+            <element signature="e#12#29#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>
