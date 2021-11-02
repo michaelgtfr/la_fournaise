@@ -73,7 +73,7 @@ class User implements UserInterface
     private $confirmationAccount;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="string", length=255)
      * @Assert\Type("string")
      * @Assert\Length(max=255)
      */
