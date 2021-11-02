@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegisterController!{% endblock %}
+
+{% block body %}
+<section class="container">
+    <div class="row">
+        <h1 class="text-center">Formulaire d'inscription:</h1>
+    </div>
+    <div class="row">
+        {{ form_start(form) }}
+            <div class="col-sm-12 p-3">
+                {{ form_row(form.name) }}
+            </div>
+            <div class="col-sm-12 p-3">
+                {{ form_row(form.email) }}
+            </div>
+            <div class="col-sm-12 p-3">
+                {{ form_row(form.password) }}
+            </div>
+            <div class="col-sm-12 p-3">
+                {{ form_row(form.confirmationPassword) }}
+            </div>
+            <div class="col-sm-12 p-3">
+                {{ form_row(form.nameOrderWithdrawal) }}
+            </div>
+            <div class="col-sm-12 p-3">
+                {{ form_row(form.numberCellphone) }}
+            </div>
+            <div class="col-sm-12 text-center p-3">
+                <button type="submit" class="btn btn-greenmousse">Valider</button>
+            </div>
+        {{ form_end(form) }}
+    </div>
+</section>
+{% endblock %}
