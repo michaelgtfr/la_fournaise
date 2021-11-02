@@ -2,6 +2,11 @@
 
 {% block title %}Hello RegisterController!{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('register') }}
+{% endblock %}
+
 {% block body %}
 <section class="container">
     <div class="row">
@@ -33,4 +38,9 @@
         {{ form_end(form) }}
     </div>
 </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('register') }}
 {% endblock %}
