@@ -9,6 +9,7 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
@@ -19,6 +20,18 @@ class LocationForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('day', ChoiceType::class, [
+                'label' => 'Jour',
+                'choices' => [
+                    'Lundi' => 1,
+                    'Mardi' => 2,
+                    'Mercredi' => 3,
+                    'Jeudi' => 4,
+                    'Vendredi' => 5,
+                    'Samedi' => 6,
+                    'Dimanche' => 0,
+                ]
+            ])
             ->add('address', TextType::class, [
                 'label' => 'Adresse'
             ])
