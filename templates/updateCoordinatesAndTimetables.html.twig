@@ -6,9 +6,12 @@
 {% endblock %}
 
 {% block body %}
-    <section class="container">
+    <section class="container form">
         <div class="row">
             {{ form_start(locationForm) }}
+                <div class="col-sm-12 mt-2">
+                    {{ form_row(locationForm.day) }}
+                </div>
                 <div class="col-sm-12 mt-2">
                     {{ form_row(locationForm.address) }}
                 </div>
@@ -40,6 +43,7 @@
                     </div>
                 </div>
                 <div class="row">
+                    <p class="form__presentation_use_coordinate mt-4 text-center">Pour définir la latitute et longitude de votre point, cliquer sur le bouton est remplissez les informations de ce site pour avoir les coordonnées demandés. <br />  <a class="btn btn-warning mt-2" href="https://www.coordonnees-gps.fr/" target="_blank">Lien</a></p>
                     <div class="col-sm-6 mt-2">
                         {{ form_row(locationForm.longitude) }}
                     </div>
