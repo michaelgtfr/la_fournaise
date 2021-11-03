@@ -1,10 +1,16 @@
 $green-personal: #72bb53;
 
-label {
-    font-weight: bold;
+.form {
+    label {
+        font-weight: bold;
+    }
+    .btn-greenmousse{
+        background-color: $green-personal;
+        color: white;
+    }
+    &__presentation_use_coordinate {
+        font-family: 'georgia', sans-serif;
+        color: #444;
+    }
 }
 
-.btn-greenmousse{
-    background-color: $green-personal;
-    color: white;
-}
