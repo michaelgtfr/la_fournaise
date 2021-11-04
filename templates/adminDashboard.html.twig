@@ -1,0 +1,40 @@
+{%  extends 'baseTwo.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('adminDashboard') }}
+{% endblock %}
+
+{% block body %}
+    <section class="my-data">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-sm-12 p-4">
+                    <h2>Mes données</h2>
+                </div>
+                <div class="col-sm-12 p-4">
+                    <div class="row">
+                        <p class="col-sm-6">Email du site:</p>
+                        <p class="col-sm-6">{{ applicationInformation.emailApplication }}</p>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <p class="col-sm-6">Facebook:</p>
+                        <p class="col-sm-6">{{ applicationInformation.facebookApplication }}</p>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <p class="col-sm-6">Numéro de téléphone:</p>
+                        <p class="col-sm-6">{{ applicationInformation.phoneNumberApplication }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('adminDashboard') }}
+{% endblock %}
