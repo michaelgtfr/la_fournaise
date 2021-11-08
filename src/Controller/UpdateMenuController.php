@@ -53,9 +53,8 @@ class UpdateMenuController
 
             if ($product->getUploadFile()) {
                 $productTreatment = new ProductTreatment();
-                $product = $productTreatment->pictureProductTreatment(
+                $product = $productTreatment->updatePictureProductTreatment(
                     $product,
-                    $em,
                     $menuForm
                 );
             }
