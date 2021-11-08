@@ -31,6 +31,7 @@ Encore
     .addEntry('register', './assets/register.js')
     .addEntry('updateCoordinatesAndTimetables', './assets/updateCoordinatesAndTimetables.js')
     .addEntry('formMenu', './assets/formMenu.js')
+    .addEntry('applicationInformation', './assets/applicationInformation.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
