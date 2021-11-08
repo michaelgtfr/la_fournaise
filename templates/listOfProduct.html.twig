@@ -32,7 +32,19 @@
                                                 <p class="product__unit_product__price">{{ product.price|format_currency('EUR', locale='fr') }}</p>
                                             </div>
                                         </div>
-                                </div>
+                                    </div>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <div class="col-sm-12">
+                                            <div class="row text-center">
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-warning" href={{ path('app_update_menu', {'id': product.id}) }}>Modifier</a>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-danger" href={{ path('app_delete_menu', {'id': product.id}) }}>Supprimer</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
 
@@ -54,6 +66,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <div class="col-sm-12">
+                                            <div class="row text-center">
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-warning" href={{ path('app_update_menu', {'id': product.id}) }}>Modifier</a>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-danger" href={{ path('app_delete_menu', {'id': product.id}) }}>Supprimer</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
 
@@ -75,6 +99,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <div class="col-sm-12">
+                                            <div class="row text-center">
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-warning" href={{ path('app_update_menu', {'id': product.id}) }}>Modifier</a>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-danger" href={{ path('app_delete_menu', {'id': product.id}) }}>Supprimer</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
 
@@ -96,6 +132,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <div class="col-sm-12">
+                                            <div class="row text-center">
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-warning" href={{ path('app_update_menu', {'id': product.id}) }}>Modifier</a>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-danger" href={{ path('app_delete_menu', {'id': product.id}) }}>Supprimer</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
 
@@ -117,6 +165,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <div class="col-sm-12">
+                                            <div class="row text-center">
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-warning" href={{ path('app_update_menu', {'id': product.id}) }}>Modifier</a>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-danger" href={{ path('app_delete_menu', {'id': product.id}) }}>Supprimer</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
 
@@ -138,6 +198,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <div class="col-sm-12">
+                                            <div class="row text-center">
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-warning" href={{ path('app_update_menu', {'id': product.id}) }}>Modifier</a>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-danger" href={{ path('app_delete_menu', {'id': product.id}) }}>Supprimer</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
 
@@ -159,6 +231,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <div class="col-sm-12">
+                                            <div class="row text-center">
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-warning" href={{ path('app_update_menu', {'id': product.id}) }}>Modifier</a>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-danger" href={{ path('app_delete_menu', {'id': product.id}) }}>Supprimer</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
 
@@ -180,10 +264,28 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <div class="col-sm-12">
+                                            <div class="row text-center">
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-warning" href={{ path('app_update_menu', {'id': product.id}) }}>Modifier</a>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-danger" href={{ path('app_delete_menu', {'id': product.id}) }}>Supprimer</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
-
                         </div>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="col-sm-4">
+                                <div class="row">
+                                    <a class="btn btn-primary" href={{ path('app_add_menu') }}>Ajouter</a>
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
                 {% else %}
                     <p>Désolé, il n'y a pas de liste de disponible.</p>
