@@ -11,7 +11,6 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductForm;
-use App\Service\ProcessingFiles;
 use App\Treatment\ProductTreatment;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
