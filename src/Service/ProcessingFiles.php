@@ -40,9 +40,8 @@ class ProcessingFiles
      * @param $folder
      * @param $name
      * @param $extension
-     * @param EntityManagerInterface $em
      */
-    public function deletePictureProduct($folder , $name, $extension, EntityManagerInterface $em)
+    public function deletePictureProduct($folder , $name, $extension)
     {
         unlink('img/'.$folder.'/'.$name.'.'.$extension);
     }
