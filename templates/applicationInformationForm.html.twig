@@ -1,0 +1,32 @@
+{% extends 'baseTwo.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('applicationInformation') }}
+{% endblock %}
+
+{%  block body %}
+<section class="container form">
+    <div class="row">
+        {{ form_start(applicationInformationForm) }}
+        <div class="col-sm-12 p-3">
+            {{ form_row(applicationInformationForm.emailApplication) }}
+        </div>
+        <div class="col-sm-12 p-3">
+            {{ form_row(applicationInformationForm.facebookApplication) }}
+        </div>
+        <div class="col-sm-12 p-3">
+            {{ form_row(applicationInformationForm.phoneNumberApplication) }}
+        </div>
+        <div class="col-sm-12 text-center p-3">
+            <button type="submit" class="btn btn-greenmousse">Valider</button>
+        </div>
+        {{ form_end(applicationInformationForm) }}
+    </div>
+</section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('applicationInformation') }}
+{% endblock %}
