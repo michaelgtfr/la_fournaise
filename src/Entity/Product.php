@@ -6,6 +6,7 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\ClassString;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -17,8 +18,6 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Assert\Unique
-     * @Assert\Type("integer")
      */
     private $id;
 
@@ -32,7 +31,7 @@ class Product
     /**
      * @ORM\Column(type="integer")
      * @Assert\Positive
-     * @Assert\Length(max=3)
+     * @Assert\Length(max=5)
      */
     private $price;
 
@@ -75,6 +74,11 @@ class Product
      * @ORM\Column(type="integer")
      */
     private $typeOfProduct;
+
+    /**
+     * @Assert\Type("string")
+     */
+    private $uploadFile;
 
     public function __construct()
     {
@@ -196,6 +200,18 @@ class Product
     public function setTypeOfProduct(int $typeOfProduct): self
     {
         $this->typeOfProduct = $typeOfProduct;
+
+        return $this;
+    }
+
+    public function getUploadFile(): ?String
+    {
+        return $this->uploadFile;
+    }
+
+    public function setUploadFile(string $uploadFile): self
+    {
+        $this->uploadFile = $uploadFile;
 
         return $this;
     }

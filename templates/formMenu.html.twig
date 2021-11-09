@@ -1,0 +1,51 @@
+{%  extends 'baseTwo.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('formMenu') }}
+{% endblock %}
+
+{%  block body %}
+    <section class="form-menu container">
+        <div class="row">
+            {{ form_start(productForm) }}
+            <div class="col-sm-12 mt-2">
+                {{ form_row(productForm.presentation) }}
+            </div>
+            <div class="col-sm-12 mt-2">
+                {{ form_row(productForm.price) }}
+            </div>
+            <div class="col-sm-12 mt-2">
+                {{ form_row(productForm.status) }}
+            </div>
+            <div class="col-sm-12 mt-2">
+                {{ form_row(productForm.name) }}
+            </div>
+            <div class="col-sm-12 mt-2">
+                {{ form_row(productForm.ingredientList) }}
+            </div>
+            <div class="col-sm-12 mt-2">
+                {{ form_row(productForm.typeOfProduct) }}
+            </div>
+            {% if picture is defined %}
+            <div class="row mt-5">
+                <div class="col-sm-6 mt-2">
+                    <img width="100%" src="/img/imgProduct/{{ picture.namePicture }}.{{ picture.extensionPicture }}" alt="{{ picture.descriptionPicture }}"/>
+                </div>
+                <div class="col-sm-6 mt-2">
+                    {{ form_row(productForm.uploadFile) }}
+                </div>
+            </div>
+            {% endif %}
+            <div class="col-sm-12 text-center p-3">
+                <button type="submit" class="btn btn-greenmousse">Valider</button>
+            </div>
+            {{ form_end(productForm) }}
+        </div>
+    </section>
+{%  endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('formMenu') }}
+{% endblock %}
