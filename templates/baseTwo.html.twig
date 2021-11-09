@@ -36,7 +36,7 @@
                     <a class="nav-item nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
                 {% elseif  is_granted('ROLE_USER')%}
                     <a class="nav-item nav-link active" href="{{ path('app_homepage') }}">Accueil</a>
-                    <a class="nav-item nav-link active" href="{{ path('app_dashboard_client', {'id': user.id}) }}">Mes données</a>
+                    <a class="nav-item nav-link active" href="{{ path('app_dashboard_client')}}">Mes données</a>
                     <a class="nav-item nav-link" href="{{ path('app_list_of_product') }}">Le menu</a>
                     <a class="nav-item nav-link" href="{{ path('app_contact') }}">Contact</a>
                     <a class="nav-item nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
@@ -99,7 +99,7 @@
                             <a  href="{{ path('app_contact') }}">Contact</a>
                         </li>
                         <li class="p-1">
-                            <a  href="{{ path('app_dashboard_client', {'id': user.id}) }}">Mes données</a>
+                            <a  href="{{ path('app_dashboard_client') }}">Mes données</a>
                         </li>
                     </ul>
                 {% else %}
