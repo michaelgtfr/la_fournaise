@@ -16,6 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -24,9 +25,8 @@ use Twig\Error\SyntaxError;
 class ClientDashboardController
 {
     /**
-     * @Route("/profile/dasboardClient/{id}", name="app_dashboard_client")
-     * @ParamConverter("user", options={"mapping": {"id": "id"}})
-     * @param User $user
+     * @Route("/profile/dasboardClient", name="app_dashboard_client")
+     * @param Security $security
      * @param EntityManagerInterface $em
      * @param Environment $twig
      * @return Response
@@ -34,13 +34,13 @@ class ClientDashboardController
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function clientDashboard(User $user, EntityManagerInterface $em, Environment $twig)
+    public function clientDashboard(Security $security, EntityManagerInterface $em, Environment $twig)
     {
-        $orders = $em->getRepository(Order::class)->findBy(['users' => $user->getId()]);
+        $orders = $em->getRepository(Order::class)->findBy(['users' => $security->getUser()->getId()]);
 
 
         $render = $twig->render('clientDashboard.html.twig', [
-            'user' => $user,
+            'user' => $security->getUser(),
             'orders' => $orders
         ]);
 
