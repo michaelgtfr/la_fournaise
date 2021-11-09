@@ -19,8 +19,6 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Assert\Unique
-     * @Assert\Type("integer")
      */
     private $id;
 
