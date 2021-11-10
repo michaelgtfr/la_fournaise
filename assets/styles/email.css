@@ -1,0 +1,36 @@
+.banner {
+    background-color: #72bb53;
+}
+
+.banner__title {
+     font-family: 'Varela Round', sans-serif;
+     font-weight: bold;
+     font-size: 48px;
+ }
+
+.fa-truck {
+    font-size: 20px;
+}
+
+p {
+     font-family: 'georgia', sans-serif;
+     font-size: 24px;
+     color: #444;
+}
+
+footer {
+    border: #e6e6e6 1px solid;
+
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+}

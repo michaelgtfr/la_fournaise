@@ -19,8 +19,6 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Assert\Unique
-     * @Assert\Type("integer")
      */
     private $id;
 
@@ -73,7 +71,7 @@ class User implements UserInterface
     private $confirmationAccount;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="string", length=255)
      * @Assert\Type("string")
      * @Assert\Length(max=255)
      */

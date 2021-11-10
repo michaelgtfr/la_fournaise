@@ -15,7 +15,6 @@ class Location
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Assert\Unique
      * @Assert\Type("integer")
      */
     private $id;
@@ -40,13 +39,11 @@ class Location
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\DateTime
      */
     private $beginHour;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\DateTime
      */
     private $endTime;
 

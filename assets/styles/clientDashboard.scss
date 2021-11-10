@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+.profile{
+    font-family: 'Helvetica', sans-serif;
+    font-size: 24px;
+    &__name{
+        font-family: 'Abril Fatface', sans-serif;
+        font-size: 36px;
+    }
+}
+
+.orders{
+    font-family: 'Helvetica', sans-serif;
+    font-size: 30px;
+    &__block{
+        border: 1px #e6e6e6 solid;
+    }
+    &__title-order{
+        background-color: #72bb53;
+    }
+}

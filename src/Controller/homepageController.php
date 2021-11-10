@@ -33,6 +33,7 @@ class homepageController
         $render = $twig->render('homepage.html.twig', [
             'locations' => $locations,
         ]);
+
         return new Response($render);
     }
 }
