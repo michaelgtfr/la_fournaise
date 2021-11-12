@@ -1,0 +1,11 @@
+$green-personal: #72bb53;
+
+.form {
+    label {
+        font-weight: bold;
+    }
+    .btn-greenmousse{
+        background-color: $green-personal;
+        color: white;
+    }
+}

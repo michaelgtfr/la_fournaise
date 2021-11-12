@@ -1,0 +1,66 @@
+{% extends 'baseTwo.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('login') }}
+{% endblock %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <section class="row align-content-center">
+        <div class="col-sm-6">
+            <img src="{{ asset("img/fond_login.jpg") }}" width="100%"/>
+        </div>
+        <div class="col-sm-4 offset-sm-1">
+            <div class="text-center">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+
+                                {% if app.user %}
+                                    <div class="mb-3">
+                                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="row m-3">
+                                    <img class="col-sm-4 offset-sm-4" src="{{ asset('img/logo_la_founaise_sans_fond.png') }}" width="100%" alt="logo of site"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mb-4" autocomplete="email" placeholder="Email" required autofocus>
+                                <input type="password" name="password" id="inputPassword" class="form-control mb-4" autocomplete="current-password" placeholder="Mot de passe" required>
+
+                                <input type="hidden" name="_csrf_token"
+                                       value="{{ csrf_token('authenticate') }}"
+                                >
+                                <div class="checkbox mb-3">
+                                    <label>
+                                        <input type="checkbox" name="_remember_me"> Se rappeler de moi
+                                    </label>
+                                </div>
+
+                                <button class="btn btn-lg btn-primary-color mt-3" type="submit">
+                                    Valider
+                                </button>
+                                <p class="mt-4">Vous n'avez pas de compte, vous pouvez en créer un en <a href="#">cliquant ici</a></p>
+                            </div>
+                        </div>
+
+                    </form>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('login') }}
+{% endblock %}

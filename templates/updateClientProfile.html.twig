@@ -1,0 +1,35 @@
+{% extends 'baseTwo.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('updateClientProfile') }}
+{% endblock %}
+
+{% block body %}
+<section class="container form">
+    <div class="row">
+        {{ form_start(userForm) }}
+        <div class="col-sm-12 p-3">
+            {{ form_row(userForm.email) }}
+        </div>
+        <div class="col-sm-12 p-3">
+            {{ form_row(userForm.name) }}
+        </div>
+        <div class="col-sm-12 p-3">
+            {{ form_row(userForm.nameOrderWithdrawal) }}
+        </div>
+        <div class="col-sm-12 p-3">
+            {{ form_row(userForm.numberCellphone) }}
+        </div>
+        <div class="col-sm-12 text-center p-3">
+            <button type="submit" class="btn btn-greenmousse">Valider</button>
+        </div>
+        {{ form_end(userForm) }}
+    </div>
+</section>
+{%  endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('updateClientProfile') }}
+{% endblock %}

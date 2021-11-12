@@ -1,0 +1,45 @@
+{% extends 'baseTwo.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('clientDashboard') }}
+{% endblock %}
+
+{% block body %}
+    <section class="container">
+        <div class="row profile p-3">
+            <div class="col-sm-12 text-center profile__name">
+                <p>{{ user.name }}</p>
+            </div>
+            <div class="col-sm-12 text-center profile__nameOrderWithdrawal">
+                <p>{{ user.nameOrderWithdrawal }}</p>
+            </div>
+            <div class="col-sm-6 text-center">
+                <p>Email: {{ user.email }}</p>
+            </div>
+            <div class="col-sm-6 text-center">
+                <p>Numéro de téléphone: {{ user.numberCellphone }}</p>
+            </div>
+            <div class="col-sm-12 text-center">
+                <a class="btn btn-warning" href={{ path('app_update_client_profile') }}>Modifier</a>
+            </div>
+        </div>
+        <div class="row orders p-5">
+            <div class="col-sm-6 offset-sm-3">
+                <div class="row orders__block">
+                    <div class="col-sm-12 text-center orders__title-order">
+                        <h2>Mes commandes:</h2>
+                    </div>
+                    {% for order in orders %}
+                        <div class="col-sm-8 orders__order">
+                            <p>Commande du {{ order.dateOrder|date("d/m/Y") }}</p>
+                        </div>
+                        <div class="col-sm-4 text-center orders__price">
+                            <p>{{ order.totalPrice }} €</p>
+                        </div>
+                    {%  endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
